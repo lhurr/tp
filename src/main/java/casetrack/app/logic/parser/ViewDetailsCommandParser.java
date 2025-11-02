@@ -26,8 +26,7 @@ public class ViewDetailsCommandParser implements Parser<Command> {
             Index index = ParserUtil.parseIndex(args);
             return new ViewDetailsCommand(index);
         } catch (ParseException pe) {
-            throw new ParseException(
-                    String.format(MESSAGE_INVALID_COMMAND_FORMAT, ViewDetailsCommand.MESSAGE_USAGE), pe);
+            throw pe;
         }
     }
 }

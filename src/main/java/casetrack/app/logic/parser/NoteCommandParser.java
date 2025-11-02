@@ -50,7 +50,7 @@ public class NoteCommandParser implements Parser<NoteCommand> {
                 Index index = ParserUtil.parseIndex(argMultimap.getPreamble());
                 return new NoteCommand(index, note);
             } catch (ParseException pe) {
-                throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, NoteCommand.MESSAGE_USAGE));
+                throw pe;
             }
         }
 
