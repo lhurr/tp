@@ -4,6 +4,7 @@ import static casetrack.app.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static casetrack.app.logic.parser.CliSyntax.PREFIX_NOTE_TEXT;
 import static casetrack.app.logic.parser.CommandParserTestUtil.assertParseFailure;
 import static casetrack.app.logic.parser.CommandParserTestUtil.assertParseSuccess;
+import static casetrack.app.logic.parser.ParserUtil.MESSAGE_INVALID_INDEX;
 import static casetrack.app.testutil.TypicalIndexes.INDEX_FIRST_PERSON;
 
 import org.junit.jupiter.api.Test;
@@ -45,22 +46,19 @@ public class AddNoteCommandParserTest {
     @Test
     public void parse_invalidIndex_throwsParseException() {
         String userInput = "a " + PREFIX_NOTE_TEXT + "Valid note";
-        assertParseFailure(parser, userInput, String.format(MESSAGE_INVALID_COMMAND_FORMAT,
-                NoteCommand.MESSAGE_USAGE));
+        assertParseFailure(parser, userInput, MESSAGE_INVALID_INDEX);
     }
 
     @Test
     public void parse_negativeIndex_throwsParseException() {
         String userInput = "-1 " + PREFIX_NOTE_TEXT + "Valid note";
-        assertParseFailure(parser, userInput, String.format(MESSAGE_INVALID_COMMAND_FORMAT,
-                NoteCommand.MESSAGE_USAGE));
+        assertParseFailure(parser, userInput, MESSAGE_INVALID_INDEX);
     }
 
     @Test
     public void parse_zeroIndex_throwsParseException() {
         String userInput = "0 " + PREFIX_NOTE_TEXT + "Valid note";
-        assertParseFailure(parser, userInput, String.format(MESSAGE_INVALID_COMMAND_FORMAT,
-                NoteCommand.MESSAGE_USAGE));
+        assertParseFailure(parser, userInput, MESSAGE_INVALID_INDEX);
     }
 
     @Test
